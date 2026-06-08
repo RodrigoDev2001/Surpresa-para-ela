@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Uma pequena surpresa</title>
+
+<style>
+body{
+    margin:0;
+    background:linear-gradient(135deg,#111827,#1f2937,#3b0764);
+    color:white;
+    font-family:Arial, sans-serif;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+}
+
+#fotos img{
+    position:absolute;
+    width:180px;
+    border-radius:15px;
+    border:4px solid white;
+    box-shadow:0 0 25px rgba(255,255,255,.2);
+    transition:.5s;
+}
+
+.foto-centro-esquerda{
+    left:260px;
+    top:50%;
+    transform:translateY(-50%) rotate(-5deg);
+    width:240px !important;
+}
+
+.foto-centro-direita{
+    right:260px;
+    top:50%;
+    transform:translateY(-50%) rotate(5deg);
+    width:240px !important;
+}
+
+.foto-esquerda-1{
+    left:180px;
+    top:120px;
+}
+
+.foto-esquerda-2{
+    left:220px;
+    bottom:120px;
+}
+
+.foto-direita-1{
+    right:180px;
+    top:120px;
+}
+
+.foto-direita-2{
+    right:220px;
+    bottom:120px;
+}
+
+.assinatura{
+    position:fixed;
+    bottom:20px;
+    left:20px;
+
+    font-size:14px;
+    opacity:.7;
+    color:#d8d8d8;
+    font-style:italic;
+
+    z-index:999;
+}
+
+
+.card{
+    width:90%;
+    max-width:700px;
+    background:rgba(0,0,0,.45);
+    padding:35px;
+    border-radius:25px;
+    text-align:center;
+    box-shadow:0 0 40px rgba(255,105,180,.35);
+    animation:entrar .8s ease;
+}
+
+h1{
+    color:#ff7ac8;
+}
+
+p{
+    font-size:22px;
+    line-height:1.5;
+}
+
+button{
+    margin-top:25px;
+    padding:14px 25px;
+    border:none;
+    border-radius:30px;
+    background:#ff5fa2;
+    color:white;
+    font-size:18px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#ff2f87;
+}
+
+.heart{
+    position:absolute;
+    color:#ff5fa2;
+    animation:subir 5s linear infinite;
+    font-size:25px;
+}
+
+@keyframes subir{
+    from{transform:translateY(100vh);opacity:1;}
+    to{transform:translateY(-10vh);opacity:0;}
+}
+
+@keyframes entrar{
+    from{opacity:0;transform:scale(.9);}
+    to{opacity:1;transform:scale(1);}
+}
+</style>
+</head>
+
+<body>
+
+<div id="fotos"></div>
+
+<div class="card" id="card">
+    <h1>Carregando surpresa...</h1>
+    <p>Preparando algo especial para alguém que apareceu do nada e deixou tudo mais divertido.</p>
+    <button onclick="proximaEtapa()">Começar</button>
+</div>
+
+<p class="assinatura">
+    Versão 1.0 • Desenvolvido especialmente para você ❤️
+</p>
+
+<script>
+const etapas = [
+    {
+        titulo:"Primeiro encontro",
+        texto:"Foi rapidinho, depois do trabalho. Comemos um churrasquinho no espeto e mesmo durando pouco, foi daqueles momentos que ficam na cabeça. Desde aquele dia o seu sorriso resolveu ocupar um espacinho meu."
+    },  
+    {
+        titulo:"Segundo encontro",
+        texto:"Fomos no Shopping, conversamos bastante enquanto voce escolhia os melhores looks para mim. Entre franguinhos, pipoca, coquinha gelada e Backrooms eu percebi que qualquer programa fica melhor quando estou com você."
+    },
+    {
+        titulo:"Terceiro encontro",
+        texto:"Fomos ao Parque, trocamos boas conversas enquanto pedalavamos uma volta que podia ter durado mais... Mesmo assim, foi mais uma memória que eu não queria que terminasse tão cedo."
+    },
+    {
+        titulo:"Meu Diagnóstico",
+        texto:"Depois de 3 encontros, várias conversas e algumas memórias que já significam bastante para mim..."
+    },
+    {
+        titulo:"Resultado encontrado ❤️",
+        texto:"Após uma análise extremamente profissional e totalmente imparcial, cheguei à seguinte conclusão: eu adoro passar tempo com você."
+    },
+    {
+        titulo:"Então...",
+        texto:"Como hoje é Dia dos Namorados, eu queria te entregar algo especial, mas feito com carinho e pensado especialmente em você"
+    },
+    {
+        titulo:"Pergunta importante",
+        texto:"Aceita continuar criando novas memórias comigo?"
+    }
+];
+
+let index = 0;
+
+function proximaEtapa(){
+    const card = document.getElementById("card");
+
+    if(index < etapas.length){
+        card.innerHTML = `
+            <h1>${etapas[index].titulo}</h1>
+            <p>${etapas[index].texto}</p>
+            <button onclick="proximaEtapa()">${index === etapas.length - 1 ? "Sim? 😳" : "Próximo"}</button>
+        `;
+        atualizarFotos();
+        index++;
+    }else{
+        card.innerHTML = `
+            <h1>❤️</h1>
+            <p>Agora só falta descobrir qual será o próximo capítulo dessa história ❤️</p>
+        `;
+    }
+}
+
+function criarCoracao(){
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (3 + Math.random() * 3) + "s";
+    document.body.appendChild(heart);
+
+    setTimeout(()=>heart.remove(),5000);
+}
+
+function criarElementoFlutuante(){
+
+    const elemento = document.createElement("div");
+
+    elemento.className = "heart";
+
+    switch(index){
+
+        case 1:
+            elemento.innerHTML = "🍖";
+            break;
+
+        case 2:
+            elemento.innerHTML = "🍿";
+            break;
+
+        case 3:
+            elemento.innerHTML = "🚲";
+            break;
+
+        default:
+            elemento.innerHTML = "❤️";
+            break;
+    }
+
+    elemento.style.left = Math.random() * 100 + "vw";
+    elemento.style.animationDuration = (3 + Math.random() * 3) + "s";
+
+    document.body.appendChild(elemento);
+
+    setTimeout(() => elemento.remove(), 5000);
+}
+
+function atualizarFotos(){
+
+    const fotos = document.getElementById("fotos");
+    console.log(index);
+
+    if(index === 0){
+
+        document.body.style.background = "linear-gradient(135deg,#1f2937,#3b2f1f,#5b3a1a)";
+
+        fotos.innerHTML = `
+        <img src="imagens/estilo.jpg" class="foto-centro-esquerda">
+        <img src="imagens/estilo2.jpg" class="foto-centro-direita">
+        `
+
+    }else if(index === 1){
+
+        document.body.style.background = "linear-gradient(135deg,#3a3a20,#5c5c2a,#707030)";
+
+        fotos.innerHTML = `
+            <img src="imagens/cinema.jpg" class="foto-centro-esquerda">
+            <img src="imagens/cinema2.jpg" class="foto-centro-direita">
+        `;
+
+    }else if(index === 2){
+
+        document.body.style.background = "linear-gradient(135deg,#0f2e1a,#1d5c37,#2f7d4d)";
+
+        fotos.innerHTML = ` 
+            <img src="imagens/bike.jpg" class="foto-centro-esquerda">
+            <img src="imagens/bike2.jpg" class="foto-centro-direita">
+        `;
+
+    }else if(index === 3 || index === 4 || index === 5 || index === 6){
+
+        document.body.style.background = "linear-gradient(135deg,#111827,#1f2937,#3b0764)";
+
+        fotos.innerHTML = `
+            <img src="imagens/nos.jpg" class="foto-centro-esquerda">
+            <img src="imagens/nos2.jpg" class="foto-centro-direita">
+        `;
+
+    }else{
+        fotos.innerHTML = "";
+    }
+}
+
+setInterval(criarElementoFlutuante,600);
+//setInterval(criarCoracao,400);
+</script>
+
+</body>
+</html>
