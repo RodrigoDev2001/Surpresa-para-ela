@@ -129,64 +129,42 @@ button:hover{
 
 @media (max-width: 768px){
 
-    h1{
-        font-size:28px;
-    }
-
-    p{
-        font-size:18px;
-    }
-
-    #fotos img{
-        width:120px !important;
-    }
-
     body{
         align-items:flex-start;
         padding-top:260px;
     }
 
     .card{
-        width:85%;
-        margin:0 auto;
+        width:82%;
+        padding:25px 18px;
+        z-index:10;
+    }
+
+    p{
+        font-size:16px;
+    }
+
+    h1{
+        font-size:26px;
+    }
+
+    #fotos img{
+        width:135px !important;
+        z-index:20;
     }
 
     .foto-centro-esquerda{
-        width:140px !important;
-        left:20px;
-        top:100px;
+        left:50% !important;
+        right:auto !important;
+        top:80px !important;
+        transform:translateX(-105%) rotate(-5deg) !important;
     }
 
     .foto-centro-direita{
-        width:140px !important;
-        right:20px;
-        top:100px;
-    }
-
-    .foto-esquerda-1{
-        left:10px;
-        top:100px;
-    }
-
-    .foto-esquerda-2{
-        left:20px;
-        bottom:100px;
-    }
-
-    .foto-direita-1{
-        right:10px;
-        top:100px;
-    }
-
-    .foto-direita-2{
-        right:20px;
-        bottom:100px;
-    }
-
-    .assinatura{
-        font-size:10px;
-        left:10px;
-        bottom:10px;
+        left:50% !important;
+        right:auto !important;
+        top:80px !important;
+        transform:translateX(5%) rotate(5deg) !important;
     }
 }
 
