@@ -128,13 +128,6 @@ button:hover{
 
 @media (max-width: 768px){
 
-    .card{
-        width:85%;
-        max-width:none;
-        padding:25px;
-        z-index:10;
-    }
-
     h1{
         font-size:28px;
     }
@@ -148,17 +141,27 @@ button:hover{
     }
 
     .foto-centro-esquerda{
-        left:10px;
+        left:50%;
         top:120px;
-        transform:rotate(-5deg);
+        transform:translateX(-110%) rotate(-5deg);
+        width:140px !important;
     }
 
     .foto-centro-direita{
-        right:10px;
+        left:50%;
         top:120px;
-        transform:rotate(5deg);
+        transform:translateX(10%) rotate(5deg);
+        width:140px !important;
     }
 
+    .card{
+    width:90%;
+    max-width:700px;
+    background:rgba(0,0,0,.45);
+    backdrop-filter:blur(8px);
+    padding:35px;
+    border-radius:25px;
+}
     .foto-esquerda-1{
         left:10px;
         top:100px;
